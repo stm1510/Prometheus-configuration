@@ -1,0 +1,7 @@
+FROM centos:7
+RUN useradd -m tawfiq -g wheel -s /bin/bash 
+EXPOSE 22 80
+COPY . /home/ 
+RUN echo "root:tawfiq" | chpasswd
+CMD ["/usr/sbin/sshd","-D"]
+CMD ["/usr/sbin/httpd","-D"]

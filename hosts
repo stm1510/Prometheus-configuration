@@ -1,0 +1,9 @@
+#instance1 ansible_host=172.17.0.2 ansible_ssh_user=root ansible_ssh_pass=tawfiq
+#instance2 ansible_host=172.17.0.3 ansible_ssh_user=root ansible_ssh_pass=tawfiq
+
+
+[ssh1]
+instance1 ansible_host=172.17.0.2 ansible_ssh_user=root ansible_ssh_pass=tawfiq
+ 
+[ssh2]
+instance2 ansible_host=172.17.0.3 ansible_ssh_user=root ansible_ssh_pass=tawfiq
