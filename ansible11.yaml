@@ -1,0 +1,71 @@
+---
+- name: Update web servers
+  hosts: ssh1
+  remote_user: root
+
+  tasks:
+  - name: Ensure apache is at the latest version
+    yum:
+      name: httpd
+      state: latest
+
+  - name: Write the apache config file
+    ansible.builtin.template:
+      src: /opt/index.html
+      dest: /var/www/html/index.html
+
+- name: Update db servers
+  hosts: ssh2
+  remote_user: root
+#  become: yes
+  tasks:
+  - name: Install vim
+    ansible.builtin.yum:
+      name: vim
+      state: latest
+
+  - name: Install haproxy
+    yum:
+      name: haproxy
+      state: latest
+- name: Install apache Tubi
+  hosts: tubi
+  become: yes
+
+  tasks:
+  - name: install apache2
+    apt:
+       name: apache2
+       state: latest
+
+  - name: Write the apache config file
+    ansible.builtin.template:
+      src: /etc/ansible/index.html
+      dest: /var/www/html/index.html
+
+  - name: Ensure that Apache is started
+    ansible.builtin.service:
+      name: apache2
+      state: started
+      enabled: yes
+  - name: Create a user
+    user:
+        name: tawfiq
+        comment: Tawfiq Sani
+        uid:  1208
+  - name: Create a Directory
+    file:
+        path: /opt/techxcellency/
+        state: directory
+        mode: 0777
+        owner: tawfiq
+  - name: Copy ansible config to Tubi
+    template:
+      src: /etc/ansible/ansible.cfg
+      dest: /opt/techxcellency/ansible.cfg
+
+  - name: Create a File
+    file:
+        path: /opt/techxcellency/tubi_ansible_tawfiq
+        state: touch
+
