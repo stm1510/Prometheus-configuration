@@ -1,0 +1,37 @@
+---
+- name: Install Mariadb 
+  host: ssh1
+  become: true 
+
+  tasks:
+    - name: Install Mariadb
+      yum:
+         name: mariadb-server 
+         state: present
+
+    - name: Start Service for Mariadb
+      service:
+        name: mariadb
+        state: started
+        enabled: yes  
+
+- name: Install httpd 
+  host: ssh2
+  become: true 
+
+  tasks:
+      - name: Update 
+      yum:
+         name: '*'
+         state: latest
+
+    - name: Install httpd
+      yum:
+         name: httpd 
+         state: present
+
+    - name: Start Service for httpd Daemon
+      service:
+        name: httpd
+        state: started
+        enabled: yes  
