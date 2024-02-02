@@ -11,6 +11,13 @@ receivers:
         send_resolved: true
 
 
+#!/bin/bash
+
+# Install the SSM agent:
+#  Ref: https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-startup-linux.html
+cd /tmp
+sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+sudo start amazon-ssm-agent
 
 ###
 
