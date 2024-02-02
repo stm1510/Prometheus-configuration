@@ -1,0 +1,31 @@
+receivers:
+  - name: 'gmail-notifications'
+    email_configs:
+      - to: 'your-email@gmail.com'
+        from: 'your-email@gmail.com'
+        smarthost: 'smtp.gmail.com:587'
+        auth_username: 'your-email@gmail.com'
+        auth_identity: 'your-email@gmail.com'
+        auth_secret: '${ALERTMANAGER_GMAIL_PASSWORD}'
+        auth_secret: 'alertmanager_gmail_password'
+        send_resolved: true
+
+
+
+###
+
+
+set your gmail password has env 
+eg export ALERTMANAGER_GMAIL_PASSWORD='your-gmail-password'
+ 
+
+or 
+
+Generate App Password:
+
+Go to your Google Account settings (https://myaccount.google.com/).
+Navigate to the "Security" tab.
+Under "Signing in to Google," find the "App passwords" section.
+Generate a new App Password. Choose "Mail" as the app and "Other" as the device.
+
+second option is the best
