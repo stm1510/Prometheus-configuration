@@ -1,0 +1,43 @@
+###Alert Manager 
+[Unit]
+Description=Alert manager Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/alert_manager/alertmanager --config.file=/opt/alert_manager/alertmanager.yml
+
+[Install]
+WantedBy=multi-user.target
+
+### Prometheus 
+[Unit]
+Description=Prometheus
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml
+
+[Install]
+WantedBy=multi-user.target
+
+###Node exporter
+[Unit]
+Description=Node Exporter 
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/node_exporter 
+
+[Install]
+WantedBy=multi-user.target
+
+
+####NB specify the Path base on the path to the binaries either /usr/local/bin or /opt 
+
+in my example the binaries are at /opt but the right path will be to copy the files to /usr/local/bin since /opt is easily accessible by anyone which can mess your binaries 
+
+
+Good luck !!!!!!!!!!!  stm
