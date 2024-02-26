@@ -37,3 +37,8 @@ find the "App passwords" section.
 Generate a new App Password. Choose "Mail" as the app and "Other" as the device.
 
 second option is the best
+
+########### minikube doc 
+
+
+https://phoenixnap.com/kb/install-minikube-on-ubuntu#:~:text=Step%201%3A%20Update%20System%20and%20Install%20Required%20Packages%0ABefore,apt-get%20install%20curl%0Asudo%20apt-get%20install%20apt-transport-https%0AIn%20the%20
